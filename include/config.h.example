@@ -1,0 +1,34 @@
+#pragma once
+
+// Copie este arquivo para include/config.h e preencha os valores:
+//   cp include/config.h.example include/config.h
+// O include/config.h está no .gitignore e NÃO deve ser versionado.
+
+// ===== Wi-Fi (o ESP32 só suporta redes 2.4 GHz) =====
+#define WIFI_SSID       "NOME_DA_REDE"
+#define WIFI_PASSWORD   "SENHA_DA_REDE"
+
+// ===== Telegram =====
+#define TELEGRAM_TOKEN     "SEU_TOKEN_DO_BOTFATHER"
+#define AUTHORIZED_CHAT_ID "CHAT_ID_DO_MORADOR"   // só este chat pode liberar/recusar
+
+// ===== Tempos =====
+#define GATE_OPEN_DURATION_MS   120000  // 2 minutos até fechar o portão
+#define IDLE_SLEEP_TIMEOUT_MS   60000   // tempo ocioso antes do deep sleep
+
+// ===== Opcionais (valores abaixo são os padrões de src/board_config.h) =====
+#define RESPONSE_TIMEOUT_MS        60000  // sem resposta do cliente: portão fica fechado (premissa UC04, a confirmar)
+#define WIFI_CONNECT_TIMEOUT_MS    15000
+#define TELEGRAM_POLL_INTERVAL_MS  1000
+#define BUTTON_DEBOUNCE_MS         50
+
+// ===== Pinos (o botão precisa ser um pino RTC para acordar do deep sleep) =====
+#define PIN_BUTTON       33   // botão do entregador, entre o pino e GND (INPUT_PULLUP)
+#define PIN_LED_YELLOW   25
+#define PIN_LED_GREEN    26
+#define PIN_BUZZER       27
+#define PIN_RELAY_OPEN   16   // relé / RF que abre o portão
+#define PIN_RELAY_CLOSE  17   // relé / RF que fecha (use o mesmo pino do OPEN se o motor é "toggle")
+
+#define RELAY_ACTIVE_LEVEL  HIGH  // nível que ativa o módulo de relé
+#define RELAY_PULSE_MS      500   // duração do pulso no relé
